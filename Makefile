@@ -6,7 +6,7 @@
 ###############################################################################
 #
 # Makefile for building the betaflight firmware.
-#
+# https://www.sao.ru/hq/sts/linux/doc/infocity/GNU_Make_3-79_russian_manual.html
 # Invoke this with 'make help' to see the list of supported targets.
 #
 ###############################################################################
@@ -16,9 +16,9 @@
 #
 
 # The target to build, see BASE_TARGETS below
-DEFAULT_TARGET ?= STM32F405
+DEFAULT_TARGET ?= AT32F435
 TARGET    ?=
-CONFIG    ?=
+CONFIG    ?= TESTF435N1
 
 # Compile-time options
 OPTIONS   ?=
@@ -36,7 +36,7 @@ CUSTOM_DEFAULTS_EXTENDED ?= no
 #   empty - ordinary build with all optimizations enabled
 #   INFO - ordinary build with debug symbols and all optimizations enabled
 #   GDB - debug build with minimum number of optimizations
-DEBUG     ?=
+DEBUG     ?= GDB
 
 # Insert the debugging hardfault debugger
 # releases should not be built with this flag as it does not disable pwm output
@@ -46,7 +46,7 @@ DEBUG_HARDFAULTS ?=
 SERIAL_DEVICE   ?= $(firstword $(wildcard /dev/ttyACM*) $(firstword $(wildcard /dev/ttyUSB*) no-port-found))
 
 # Flash size (KB).  Some low-end chips actually have more flash than advertised, use this to override.
-FLASH_SIZE ?=
+FLASH_SIZE ?= 1024
 
 ###############################################################################
 # Things that need to be maintained as the source changes
@@ -88,15 +88,16 @@ BASE_TARGETS     := $(sort $(notdir $(patsubst %/,%,$(dir $(wildcard $(ROOT)/src
 
 # configure some directories that are relative to wherever ROOT_DIR is located
 TOOLS_DIR  ?= $(ROOT)/tools
+$(warning TOOLS_DIR := $(TOOLS_DIR))
 DL_DIR     := $(ROOT)/downloads
 CONFIG_DIR ?= $(BETAFLIGHT_CONFIG)
 ifeq ($(CONFIG_DIR),)
 CONFIG_DIR := $(ROOT)/src/config
 endif
 DIRECTORIES := $(DL_DIR) $(TOOLS_DIR)
-
+$(warning CONFIG_DIR := $(CONFIG_DIR))
 export RM := rm
-
+$(warning OSFAMILY := $(OSFAMILY))
 # import macros that are OS specific
 include $(MAKE_SCRIPT_DIR)/$(OSFAMILY).mk
 
@@ -126,6 +127,8 @@ endif
 
 # default xtal value
 HSE_VALUE       ?= 8000000
+$(warning TARGET := $(TARGET))
+$(warning HSE_VALUE := $(HSE_VALUE))
 
 CI_EXCLUDED_TARGETS := $(sort $(notdir $(patsubst %/,%,$(dir $(wildcard $(ROOT)/src/main/target/*/.exclude)))))
 CI_TARGETS          := $(filter-out $(CI_EXCLUDED_TARGETS), $(BASE_TARGETS)) $(filter CRAZYBEEF4SX1280 CRAZYBEEF4FR IFLIGHT_BLITZ_F722 NUCLEOF446 SPRACINGH7EXTREME SPRACINGH7RF, $(BASE_CONFIGS))
@@ -135,6 +138,7 @@ REVISION := norevision
 ifeq ($(shell git diff --shortstat),)
 REVISION := $(shell git log -1 --format="%h")
 endif
+$(warning REVISION := $(REVISION))
 
 LD_FLAGS        :=
 EXTRA_LD_FLAGS  :=
@@ -178,7 +182,7 @@ TARGET_FLAGS  	:= $(TARGET_FLAGS) -DUSE_CONFIG
 endif
 
 include $(MAKE_SCRIPT_DIR)/mcu/$(TARGET_MCU_FAMILY).mk
-
+$(warning LD_SCRIPT := $(LD_SCRIPT))
 # openocd specific includes
 include $(MAKE_SCRIPT_DIR)/openocd.mk
 

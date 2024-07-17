@@ -37,11 +37,14 @@ endif
 
 ifeq ($(OSFAMILY), windows)
   ARM_SDK_URL := https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-mingw-w64-i686-arm-none-eabi.zip?rev=93fda279901c4c0299e03e5c4899b51f&hash=99EF910A1409E119125AF8FED325CF79
+  ARM_SDK_DIR := $(ARM_SDK_BASE_DIR)
+  $(warning ARM_SDK_DIR := $(ARM_SDK_DIR))
 endif
 
 ARM_SDK_FILE := $(notdir $(ARM_SDK_URL))
 
 SDK_INSTALL_MARKER := $(ARM_SDK_DIR)/bin/arm-none-eabi-gcc-$(GCC_REQUIRED_VERSION)
+$(warning SDK_INSTALL_MARKER := $(SDK_INSTALL_MARKER))
 
 .PHONY: arm_sdk_version
 
