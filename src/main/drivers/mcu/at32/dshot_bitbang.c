@@ -146,6 +146,8 @@ static void bbOutputDataSet(uint32_t *buffer, int pinNumber, uint16_t value, boo
     for (int pos = 0; pos < 16; pos++) {
         if (!(value & 0x8000)) {
             buffer[pos * 3 + 1] |= middleBit;
+        } else {
+            buffer[pos * 3 + 1] &= ~middleBit;
         }
         value <<= 1;
     }
