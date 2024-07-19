@@ -245,12 +245,19 @@ bool i2cBusy(I2CDevice device, bool *error)
         *error = pHandle->error_code;
     }
 
-    if (pHandle->error_code == I2C_OK) {
-        if (i2c_flag_get(pHandle->i2cx, I2C_BUSYF_FLAG) == SET) {
-            return true;
-        }
-        return false;
-    }
+	if (pHandle->state == I2C_START) {
+		if (i2c_flag_get(pHandle->i2cx, I2C_BUSYF_FLAG) == SET) {
+			return true;
+		}
+		return false;
+	} else {
+		if (pHandle->error_code != I2C_OK) {
+			i2c_flag_clear(pHandle->i2cx, pHandle->error_code);
+			pHandle->error_code = 0;
+			return true;
+		}
+		return false;
+	}
 
     return true;
 }
