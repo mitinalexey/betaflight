@@ -18,7 +18,7 @@
 # The target to build, see BASE_TARGETS below
 DEFAULT_TARGET ?= AT32F435
 TARGET    ?=
-CONFIG    ?= TESTF435N1
+CONFIG    ?= MITINF435N1
 
 # Compile-time options
 OPTIONS   ?=

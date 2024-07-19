@@ -97,6 +97,18 @@ void mcoConfigure(MCODevice_e device, const mcoConfig_t *config)
     io = IOGetByTag(DEFIO_TAG_E(PA8));
     IOInit(io, OWNER_MCO, 1);
     HAL_RCC_MCOConfig(RCC_MCO, mcoSources[config->source], mcoDividers[config->divider]);
+#elif defined(AT32F4)
+    switch(device) {
+    case MCODEV_1: // MCO1 on PA8
+        io = IOGetByTag(DEFIO_TAG_E(PA8));
+        IOInit(io, OWNER_MCO, 2);
+        return; //for support clkout1 OSD 27MHz
+    case MCODEV_2: // MCO2 on PC9
+        io = IOGetByTag(DEFIO_TAG_E(PC9));
+        IOInit(io, OWNER_MCO, 2);
+        break; // Not supported (yet)
+    }
+
 #else
 #error Unsupported MCU
 #endif
