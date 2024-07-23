@@ -500,7 +500,8 @@ void init(void)
     // G4 only supports one MCO on PA8
     mcoConfigure(MCODEV_1, mcoConfig(MCODEV_1));
 #elif defined(AT32F4)
-    mcoConfigure(MCODEV_1, mcoConfig(MCODEV_1));
+//    mcoConfigure(MCODEV_1, mcoConfig(MCODEV_1)); // while not support config
+    IOInit(IOGetByTag(DEFIO_TAG_E(PA8)), OWNER_MCO, 2);
 #else
 #error Unsupported MCU
 #endif

@@ -99,9 +99,9 @@
 #define FLASH_CS_PIN            PB6
 #define MAX7456_SPI_CS_PIN      PB7
 #define USE_MCO
-#define SPI1_SCK_PIN            PB3
-#define SPI1_SDI_PIN            PB5
-#define SPI1_SDO_PIN            PB4
+#define SPI1_SCK_PIN            PB3 // sck
+#define SPI1_SDI_PIN            PB4 // miso
+#define SPI1_SDO_PIN            PB5 // mosi
 
 #define ADC_VBAT_PIN            PA0
 #define ADC_CURR_PIN            PA4
@@ -114,19 +114,16 @@
 
 #define USE_ACC
 #define USE_GYRO
-#define USE_ACCGYRO_BMI270
-// #define USE_ACC_SPI_MPU6000
-// #define USE_GYRO_SPI_MPU6000
-// #define USE_ACC_SPI_ICM42688P
-// #define USE_GYRO_SPI_ICM42688P
+//#define USE_ACCGYRO_BMI270
+#define USE_ACCGYRO_QMI8658
 #define GYRO_1_SPI_INSTANCE     SPI2
 #define DEFAULT_ALIGN_BOARD_YAW 0
 
 #define GYRO_1_EXTI_PIN         PA15
 #define GYRO_1_CS_PIN           PB12
-#define SPI2_SCK_PIN            PB13
-#define SPI2_SDI_PIN            PB15
-#define SPI2_SDO_PIN            PB14
+#define SPI2_SCK_PIN            PB13 // sck
+#define SPI2_SDI_PIN            PB14 // miso
+#define SPI2_SDO_PIN            PB15 // mosi
 /*
 #define TIMER_PIN_MAPPING       TIMER_PIN_MAP(0, PA8, 1, 7) \
                                 TIMER_PIN_MAP(1, PB6, 1, 0) \

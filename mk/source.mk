@@ -279,6 +279,8 @@ COMMON_SRC += \
             drivers/accgyro/accgyro_mpu.c \
             drivers/accgyro/accgyro_spi_bmi160.c \
             drivers/accgyro/accgyro_spi_bmi270.c \
+            drivers/accgyro/accgyro_spi_qmi8658.c \
+            drivers/accgyro/accgyro_spi_qmi8658_init.c \
             drivers/accgyro/accgyro_spi_icm20649.c \
             drivers/accgyro/accgyro_spi_icm20689.c \
             drivers/accgyro/accgyro_spi_icm426xx.c \

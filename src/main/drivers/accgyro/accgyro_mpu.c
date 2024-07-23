@@ -48,6 +48,7 @@
 #include "drivers/accgyro/accgyro_mpu6500.h"
 #include "drivers/accgyro/accgyro_spi_bmi160.h"
 #include "drivers/accgyro/accgyro_spi_bmi270.h"
+#include "drivers/accgyro/accgyro_spi_qmi8658.h"
 #include "drivers/accgyro/accgyro_spi_icm20649.h"
 #include "drivers/accgyro/accgyro_spi_icm20689.h"
 #include "drivers/accgyro/accgyro_spi_icm426xx.h"
@@ -364,6 +365,9 @@ static gyroSpiDetectFn_t gyroSpiDetectFnTable[] = {
 #ifdef USE_ACCGYRO_BMI270
     bmi270Detect,
 #endif
+#ifdef USE_ACCGYRO_QMI8658
+    qmi8658Detect,
+#endif
 #if defined(USE_GYRO_SPI_ICM42605) || defined(USE_GYRO_SPI_ICM42688P)
     icm426xxSpiDetect,
 #endif
@@ -387,7 +391,7 @@ static bool detectSPISensorsAndUpdateDetectionResult(gyroDev_t *gyro, const gyro
     IOInit(gyro->dev.busType_u.spi.csnPin, OWNER_GYRO_CS, RESOURCE_INDEX(config->index));
     IOConfigGPIO(gyro->dev.busType_u.spi.csnPin, SPI_IO_CS_CFG);
     IOHi(gyro->dev.busType_u.spi.csnPin); // Ensure device is disabled, important when two devices are on the same bus.
-
+    
     // Allow 100ms before attempting to access gyro's SPI bus
     // Do this once here rather than in each detection routine to speed boot
     while (millis() < GYRO_SPI_STARTUP_MS);
