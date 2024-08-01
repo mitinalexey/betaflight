@@ -70,7 +70,7 @@ void ledInit(const statusLedConfig_t *statusLedConfig)
         if (statusLedConfig->ioTags[i]) {
             leds[i] = IOGetByTag(statusLedConfig->ioTags[i]);
             IOInit(leds[i], OWNER_LED, RESOURCE_INDEX(i));
-            IOConfigGPIO(leds[i], IOCFG_OUT_PP);
+            IOConfigGPIO(leds[i], IOCFG_OUT_OD);
         } else {
             leds[i] = IO_NONE;
         }

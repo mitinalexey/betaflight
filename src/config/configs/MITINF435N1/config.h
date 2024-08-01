@@ -57,8 +57,9 @@
 #define USE_LED_STRIP
 #define LED_STRIP_PIN           PC9
 
-#define USE_CAMERA_CONTROL
-#define CAMERA_CONTROL_PIN      PB2
+//#define CAMERA SWITCH CONTROL
+#define PINIO1_PIN              PB2
+#define PINIO1_BOX              32
 
 #define UART1_RX_PIN            PA10
 #define UART1_TX_PIN            PA9
@@ -103,11 +104,11 @@
 #define SPI1_SDI_PIN            PB4 // miso
 #define SPI1_SDO_PIN            PB5 // mosi
 
-#define ADC_VBAT_PIN            PA0
-#define ADC_CURR_PIN            PA4
+#define ADC_VBAT_PIN            PC1
+#define ADC_CURR_PIN            PC0
 #define ADC_RSSI_PIN            PC2
-#define ADC_EXTERNAL1_PIN       PC0        //ADC1  ADC_VBAT2_PIN
-#define ADC_EXTERNAL2_PIN       PC1        //ADC1  ADC_CURR2_PIN 
+#define ADC_EXTERNAL1_PIN       PA4        //ADC1  ADC_VBAT2_PIN
+#define ADC_EXTERNAL2_PIN       PA0        //ADC1  ADC_CURR2_PIN 
 
 #define DEFAULT_CURRENT_METER_SOURCE    CURRENT_METER_ADC
 #define DEFAULT_VOLTAGE_METER_SOURCE    VOLTAGE_METER_ADC
