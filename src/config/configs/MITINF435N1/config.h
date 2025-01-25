@@ -83,6 +83,7 @@
 
 #define USE_BARO
 #define USE_BARO_BMP280
+#define USE_BARO_QMP6988
 #define I2C2_SCL_PIN            PH2
 #define I2C2_SDA_PIN            PH3
 #define BARO_I2C_INSTANCE       (I2CDEV_2)
