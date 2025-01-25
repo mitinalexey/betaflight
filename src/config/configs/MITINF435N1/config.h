@@ -160,16 +160,58 @@
 #define MOTOR8_PIN              PB1
 
 */
+
 #define TIMER_PIN_MAPPING       TIMER_PIN_MAP(0, PA5, 1, 0) \
                                 TIMER_PIN_MAP(1, PA1, 1, 1) \
                                 TIMER_PIN_MAP(2, PB10, 1, 2) \
                                 TIMER_PIN_MAP(3, PB11, 1, 3) \
-                                TIMER_PIN_MAP(4, PA6, 2, 4) \
-                                TIMER_PIN_MAP(5, PA7, 2, 5) \
+                                TIMER_PIN_MAP(4, PA6, 1, 4) \
+                                TIMER_PIN_MAP(5, PA7, 1, 5) \
                                 TIMER_PIN_MAP(6, PB0, 2, 6) \
                                 TIMER_PIN_MAP(7, PB1, 2, 7) \
-                                TIMER_PIN_MAP(8, PC9, 3, 12) \
+                                TIMER_PIN_MAP(8, PC9, 2, 12) \
 
+/*
+Check timers in command line by "dump"
+    # timer
+    timer A05 AF1
+    # pin A05: TIM2 CH1 (AF1)
+    timer A01 AF1
+    # pin A01: TIM2 CH2 (AF1)
+    timer B10 AF1
+    # pin B10: TIM2 CH3 (AF1)
+    timer B11 AF1
+    # pin B11: TIM2 CH4 (AF1)
+    timer A06 AF2
+    # pin A06: TIM3 CH1 (AF2)
+    timer A07 AF2
+    # pin A07: TIM3 CH2 (AF2)
+    timer B00 AF2
+    # pin B00: TIM3 CH3 (AF2)
+    timer B01 AF2
+    # pin B01: TIM3 CH4 (AF2)
+    timer C09 AF3
+    # pin C09: TIM8 CH4 (AF3)
+
+    dma pin A05 0
+    # pin A05: DMA1 Channel 1 Request 56
+    dma pin A01 1
+    # pin A01: DMA1 Channel 2 Request 57
+    dma pin B10 2
+    # pin B10: DMA1 Channel 3 Request 58
+    dma pin B11 3
+    # pin B11: DMA1 Channel 4 Request 59
+    dma pin A06 4
+    # pin A06: DMA1 Channel 5 Request 61
+    dma pin A07 5
+    # pin A07: DMA1 Channel 6 Request 62
+    dma pin B00 6
+    # pin B00: DMA1 Channel 7 Request 63
+    dma pin B01 7
+    # pin B01: DMA2 Channel 1 Request 64
+    dma pin C09 12
+    # pin C09: DMA2 Channel 6 Request 52
+*/
 
 #define ADC_INSTANCE            ADC1
 #define ADC1_DMA_OPT            11
