@@ -102,6 +102,7 @@
 #include "flight/pid_init.h"
 #include "flight/position.h"
 #include "flight/servos.h"
+#include "flight/se.h"
 
 #include "io/asyncfatfs/asyncfatfs.h"
 #include "io/beeper.h"
@@ -732,6 +733,10 @@ void init(void)
 
 #ifdef USE_PINIOBOX
     pinioBoxInit(pinioBoxConfig());
+#endif
+
+#ifdef USE_SE
+    seShockInit();
 #endif
 
     LED1_ON;

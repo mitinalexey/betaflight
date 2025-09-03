@@ -22,7 +22,7 @@
 
 #include "debug.h"
 
-int16_t debug[DEBUG16_VALUE_COUNT];
+float debug[DEBUG16_VALUE_COUNT];
 uint8_t debugMode;
 
 // Please ensure that these names are aligned with the enum values defined in 'debug.h' - for OSD be sure the name is unique with 12 chars.
@@ -120,4 +120,5 @@ const char * const debugModeNames[DEBUG_COUNT] = {
     "TPA",
     "S_TERM",
     "SPA",
+    "SHOCK"
 };

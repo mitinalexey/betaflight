@@ -102,6 +102,7 @@ static const box_t boxes[CHECKBOX_ITEM_COUNT] = {
     { .boxId = BOXBEEPERMUTE, .boxName = "BEEPER MUTE", .permanentId = 52},
     { .boxId = BOXREADY, .boxName = "READY", .permanentId = 53},
     { .boxId = BOXLAPTIMERRESET, .boxName = "LAP TIMER RESET", .permanentId = 54},
+    { .boxId = BOXSHOCK, .boxName = "SHOCK", .permanentId = 69},
 };
 
 // mask of enabled IDs, calculated on startup based on enabled features. boxId_e is used as bit index
@@ -312,6 +313,7 @@ void initActiveBoxIds(void)
                 case BOXUSER2:
                 case BOXUSER3:
                 case BOXUSER4:
+                case BOXSHOCK:
                     BME(box->boxId);
                     break;
                 default:

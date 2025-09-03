@@ -157,6 +157,7 @@
 #define PG_MSP_CONFIG               557
 #define PG_SOFTSERIAL_PIN_CONFIG    558
 #define PG_BETAFLIGHT_END           558
+#define PG_SE_CONFIG                600 // Special Edition
 
 
 // OSD configuration (subject to change)

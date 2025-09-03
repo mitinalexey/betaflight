@@ -99,7 +99,7 @@ typedef enum {DISABLE = 0, ENABLE = !DISABLE} FunctionalState;
 #define DMA_RAM_W
 #define DMA_RAM_RW
 
-#define USE_LATE_TASK_STATISTICS
+//#define USE_LATE_TASK_STATISTICS
 
 #define USE_RPM_FILTER
 #define USE_DYN_IDLE
