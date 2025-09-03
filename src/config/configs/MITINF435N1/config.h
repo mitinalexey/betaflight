@@ -38,9 +38,10 @@
 
 #define USE_MAX7456
 
-// #define USE_BEEPER
-// #define BEEPER_PIN              PC15
-// #define BEEPER_INVERTED
+#define USE_SE
+#define USE_BEEPER
+#define BEEPER_INVERTED
+#define BEEPER_PIN              PC9
 
 // TMR2_CH1-CH4
 #define MOTOR1_PIN              PA5
@@ -55,7 +56,7 @@
 
 // TMR8_CH4
 #define USE_LED_STRIP
-#define LED_STRIP_PIN           PC9
+//#define LED_STRIP_PIN           PC9
 
 //#define CAMERA SWITCH CONTROL
 #define PINIO1_PIN              PB2
@@ -121,7 +122,7 @@
 //#define USE_ACCGYRO_BMI270
 #define USE_ACCGYRO_QMI8658
 #define GYRO_1_SPI_INSTANCE     SPI2
-#define DEFAULT_ALIGN_BOARD_YAW 0
+#define GYRO_1_ALIGN            CW90_DEG
 
 #define GYRO_1_EXTI_PIN         PA15
 #define GYRO_1_CS_PIN           PB12

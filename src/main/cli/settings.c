@@ -64,6 +64,7 @@
 #include "flight/position.h"
 #include "flight/rpm_filter.h"
 #include "flight/servos.h"
+#include "flight/se.h"
 
 #include "io/beeper.h"
 #include "io/dashboard.h"
@@ -138,14 +139,14 @@
 const char * const lookupTableAccHardware[] = {
     "AUTO", "NONE", "ADXL345", "MPU6050", "MMA8452", "BMA280", "LSM303DLHC",
     "MPU6000", "MPU6500", "MPU9250", "ICM20601", "ICM20602", "ICM20608G", "ICM20649", "ICM20689", "ICM42605", "ICM42688P",
-    "BMI160", "BMI270", "LSM6DSO", "LSM6DSV16X", "VIRTUAL"
+    "BMI160", "BMI270", "QMI8658", "LSM6DSO", "LSM6DSV16X", "VIRTUAL"
 };
 
 // sync with gyroHardware_e
 const char * const lookupTableGyroHardware[] = {
     "AUTO", "NONE", "MPU6050", "L3G4200D", "MPU3050", "L3GD20",
     "MPU6000", "MPU6500", "MPU9250", "ICM20601", "ICM20602", "ICM20608G", "ICM20649", "ICM20689", "ICM42605", "ICM42688P",
-    "BMI160", "BMI270", "LSM6DSO", "LSM6DSV16X", "VIRTUAL"
+    "BMI160", "BMI270", "QMI8658", "LSM6DSO", "LSM6DSV16X", "VIRTUAL"
 };
 
 #if defined(USE_SENSOR_NAMES) || defined(USE_BARO)
@@ -1800,6 +1801,14 @@ const clivalue_t valueTable[] = {
     { "box_user_2_name", VAR_UINT8 | HARDWARE_VALUE | MODE_STRING, .config.string = { 1, MAX_BOX_USER_NAME_LENGTH, STRING_FLAGS_NONE }, PG_MODE_ACTIVATION_CONFIG, offsetof(modeActivationConfig_t, box_user_2_name) },
     { "box_user_3_name", VAR_UINT8 | HARDWARE_VALUE | MODE_STRING, .config.string = { 1, MAX_BOX_USER_NAME_LENGTH, STRING_FLAGS_NONE }, PG_MODE_ACTIVATION_CONFIG, offsetof(modeActivationConfig_t, box_user_3_name) },
     { "box_user_4_name", VAR_UINT8 | HARDWARE_VALUE | MODE_STRING, .config.string = { 1, MAX_BOX_USER_NAME_LENGTH, STRING_FLAGS_NONE }, PG_MODE_ACTIVATION_CONFIG, offsetof(modeActivationConfig_t, box_user_4_name) },
+#endif
+
+// PG_SE
+#ifdef USE_SE
+    { "se_test1", VAR_UINT16 | MASTER_VALUE, .config.minmaxUnsigned = { 0, 160 }, PG_SE_CONFIG, offsetof(seConfig_t, se_test1) },
+    { "shock_acc_thr", VAR_UINT16 | MASTER_VALUE, .config.minmaxUnsigned = { 0, 2000 }, PG_SE_CONFIG, offsetof(seConfig_t, shock_acc_thr) },
+    { "shock_delay_ms", VAR_UINT32 | MASTER_VALUE, .config.u32Max = UINT32_MAX, PG_SE_CONFIG, offsetof(seConfig_t, shock_delay_ms) },
+    { "shock_box_permanentid", VAR_UINT8 | MASTER_VALUE, .config.minmaxUnsigned = {0, 100}, PG_SE_CONFIG, offsetof(seConfig_t, shock_box_permanentid) },
 #endif
 };
 

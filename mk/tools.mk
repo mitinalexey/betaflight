@@ -17,9 +17,11 @@
 ##############################
 
 # Set up ARM (STM32) SDK
-ARM_SDK_BASE_DIR ?= $(TOOLS_DIR)/arm-gnu-toolchain-13.2.Rel1
+# ARM_SDK_BASE_DIR ?= $(TOOLS_DIR)/arm-gnu-toolchain-13.2.Rel1
+ARM_SDK_BASE_DIR ?= $(TOOLS_DIR)/xpack-arm-none-eabi-gcc-14.2.1-1.1-win32-x64
 # Checked below, Should match the output of $(shell arm-none-eabi-gcc -dumpversion)
-GCC_REQUIRED_VERSION ?= 13.2.1
+# GCC_REQUIRED_VERSION ?= 13.2.1
+GCC_REQUIRED_VERSION ?= 14.2.1
 
 ## arm_sdk_install   : Install Arm SDK
 .PHONY: arm_sdk_install
